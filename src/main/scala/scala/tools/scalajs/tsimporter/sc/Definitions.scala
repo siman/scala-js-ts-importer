@@ -42,7 +42,7 @@ object QualifiedName {
   val scala = Root dot Name.scala
   val scala_js = scala dot Name.js
 
-  val Array = scala_js dot Name("Array")
+  val Array = Name("Array")
   def Function(arity: Int) = scala_js dot Name("Function"+arity)
 }
 
@@ -170,14 +170,14 @@ case class TypeRef(typeName: QualifiedName, targs: List[TypeRef] = Nil) {
 object TypeRef {
   import QualifiedName.{ scala, scala_js }
 
-  val Any = TypeRef(scala_js dot Name("Any"))
-  val Dynamic = TypeRef(scala_js dot Name("Dynamic"))
-  val Number = TypeRef(scala_js dot Name("Number"))
-  val Boolean = TypeRef(scala_js dot Name("Boolean"))
-  val String = TypeRef(scala_js dot Name("String"))
-  val Object = TypeRef(scala_js dot Name("Object"))
+  val Any = TypeRef(Name("Any"))
+  val Dynamic = TypeRef(Name("Dynamic"))
+  val Number = TypeRef(Name("Number"))
+  val Boolean = TypeRef(Name("Boolean"))
+  val String = TypeRef(Name("String"))
+  val Object = TypeRef(Name("Object"))
   val Function = TypeRef(scala_js dot Name("Function"))
-  val Unit = TypeRef(scala dot Name("Unit"))
+  val Unit = TypeRef(Name("Unit"))
 
   object Repeated {
     def apply(underlying: TypeRef): TypeRef =

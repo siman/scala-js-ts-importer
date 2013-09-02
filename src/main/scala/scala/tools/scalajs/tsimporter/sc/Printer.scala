@@ -106,7 +106,15 @@ class Printer(private val output: PrintWriter) {
   }
 
   def printTypeRef(tpe: TypeRef) {
+//    import QualifiedName.{ scala, scala_js }
     tpe match {
+      case TypeRef(typeName, _targs) if typeName.toString.matches("scala.js.Function[\\d]*") =>
+        val targs = if (_targs.isEmpty) List(TypeRef.Any) else _targs
+//        println(typeName.toString())
+        val (fargs, fres) = targs.splitAt(targs.size - 1)
+        val fargsStr = fargs.map(_.typeName).mkString(", ")
+        p"($fargsStr) => ${fres.head}"
+
       case TypeRef(typeName, Nil) =>
         p"$typeName"
 
