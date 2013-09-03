@@ -171,7 +171,7 @@ object TypeRef {
   import QualifiedName.{ scala, scala_js }
 
   val Any = TypeRef(Name("Any"))
-  val Dynamic = TypeRef(Name("Dynamic"))
+  val Dynamic = TypeRef(Name("JsDynamic"))
   val Number = TypeRef(Name("Number"))
   val Boolean = TypeRef(Name("Boolean"))
   val String = TypeRef(Name("String"))
